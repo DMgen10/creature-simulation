@@ -11,8 +11,12 @@ public class Predator extends Creature {
 
     @Override
     public void makeMove() {
+
         // переместиться к жертве - травоядному
         // атаковать травоядное - HP травоядного уменьшается на attackPower, если HP = 0 -> травоядное умирает
     }
 
+    public int getAttackPower() {
+        return attackPower;
+    }
 }
