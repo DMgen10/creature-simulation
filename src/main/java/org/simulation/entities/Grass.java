@@ -4,7 +4,7 @@ public class Grass extends Subject{
 
     private int energy;
 
-    public Grass(boolean edible, int energy) {
+    public Grass(int energy) {
         super(true);
         this.energy = energy;
     }

@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class Position {
 
-    final public int column;
+    final public int col;
     final public int row;
 
     public Position(int column, int row) {
-        this.column = column;
+        this.col = column;
         this.row = row;
     }
 
-    public int getColumn() {
-        return column;
+    public int getCol() {
+        return col;
     }
 
     public int getRow() {
@@ -23,11 +23,11 @@ public class Position {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Position position)) return false;
-        return column == position.column && row == position.row;
+        return col == position.col && row == position.row;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(column, row);
+        return Objects.hash(col, row);
     }
 }

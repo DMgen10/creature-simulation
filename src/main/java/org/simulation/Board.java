@@ -1,23 +1,22 @@
 package org.simulation;
 
 import org.simulation.entities.Entity;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Location {
+public class Board {
 
-    final int length;
+    final int height;
     final int width;
     private final Map<Position, Entity> entities;
 
-    public Location(int width, int length) {
+    public Board(int width, int length) {
         if (width <= 0 || length <= 0){
             throw new IllegalArgumentException("Width and height must be greater than 0");
         }
 
-        this.length = length;
+        this.height = length;
         this.width = width;
         entities = new HashMap<>(width * length);
     }
@@ -26,7 +25,6 @@ public class Location {
         validatePosition(position);
 
         entities.remove(position);
-
     }
 
     public void add(Position position, Entity entity){
@@ -53,9 +51,9 @@ public class Location {
         }
 
         return position.getRow() >= 0 &&
-               position.getRow() < length &&
-               position.getColumn() >= 0 &&
-               position.getColumn() < width;
+               position.getRow() < height &&
+               position.getCol() >= 0 &&
+               position.getCol() < width;
     }
 
     private void validateEntity(Entity entity){
@@ -74,8 +72,8 @@ public class Location {
 
     }
 
-    public final int getLength() {
-        return length;
+    public final int getHeight() {
+        return height;
     }
 
     public final int getWidth() {
