@@ -56,6 +56,21 @@ public class Board {
                position.getCol() < width;
     }
 
+    public Position getRandomFreePosition(){
+        int maxAttempts = getHeight() * getWidth();
+
+        for (int count = 0; count < maxAttempts; count++) {
+            int row = random.nextInt(getHeight());
+            int col = random.nextInt(getWidth());
+
+            Position position = new Position(col, row);
+            if (isPositionEmpty(position)){
+                return position;
+            }
+        }
+        return null;
+    }
+
     private void validateEntity(Entity entity){
         if (entity == null){
             throw new IllegalArgumentException("Entity cannot be null");
