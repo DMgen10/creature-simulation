@@ -56,6 +56,10 @@ public class Board {
                position.getCol() < width;
     }
 
+    public void move(Position from, Position to){
+        
+    }
+
     public Position getRandomFreePosition(){
         int maxAttempts = getHeight() * getWidth();
 
