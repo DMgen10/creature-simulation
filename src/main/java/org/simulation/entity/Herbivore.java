@@ -46,8 +46,25 @@ public class Herbivore extends Creature {
             return;
         }
 
-        Position nextStep = shortestPath.get(1);
-        board.moveEntity(this.getPosition(), nextStep);
+        int maxSteps = Math.min(this.getSpeed(), shortestPath.size() - 1);
+        Position current = this.getPosition();
+
+        for (int step = 1; step <= maxSteps ; step++) {
+            Position next = shortestPath.get(step);
+
+            if (!board.isPositionEmpty(next) && !(board.getEntity(next) instanceof Grass)){
+                break;
+            }
+
+            board.moveEntity(current, next);
+            current = next;
+
+            if (board.getEntity(current) instanceof Grass){
+                board.remove(current);
+                this.changeHealth(simulationConfig.getGrassNutrition());
+                break;
+            }
+        }
     }
 
     private void moveRandomly(Board board) {
