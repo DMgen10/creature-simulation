@@ -13,7 +13,12 @@ public class Herbivore extends Creature {
         // может потратить ход на движение в сторону травы, либо на её поглощение
 
     private void moveRandomly(Board board) {
-        List<Position> freeNeighbors = getFreePositions(board)
+        List<Position> freeNeighbors = getFreePositions(board);
+        if (!freeNeighbors.isEmpty()){
+            Random random = new Random();
+            Position target = freeNeighbors.get(random.nextInt(freeNeighbors.size()));
+            board.moveEntity(this.getPosition(), target);
+        }
     }
 
     private List<Position> getFreePositions(Board board) {
